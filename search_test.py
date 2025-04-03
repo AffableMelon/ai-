@@ -42,29 +42,11 @@ def run_tests():
     for start, goal, test_name in test_cases:
         print(f"\n--- Test: {test_name} ---")
 
-        # Measure BFS time
-        start_time = time.time()
-        bfs_result = uninformed_searches.bfs(unweighted_graph, start, goal)
-        bfs_time = time.time() - start_time
-        print(f"BFS {start} to {goal}: {bfs_result} (Time: {bfs_time:.6f} seconds)")
+        print(f"BFS {start} to {goal}: {uninformed_searches.bfs(unweighted_graph, start, goal)}")
+        print(f"DFS {start} to {goal}: {uninformed_searches.dfs(unweighted_graph, start, goal)}")
+        print(f"UCS {start} to {goal}: {uninformed_searches.ucs(graph, start, goal)}")
+        print(f"IDDFS {start} to {goal}: {uninformed_searches.iddfs(graph, start, goal, 10)}")
 
-        # Measure DFS time
-        start_time = time.time()
-        dfs_result = uninformed_searches.dfs(unweighted_graph, start, goal)
-        dfs_time = time.time() - start_time
-        print(f"DFS {start} to {goal}: {dfs_result} (Time: {dfs_time:.6f} seconds)")
-
-        # Measure UCS time
-        start_time = time.time()
-        ucs_result = uninformed_searches.ucs(graph, start, goal)
-        ucs_time = time.time() - start_time
-        print(f"UCS {start} to {goal}: {ucs_result} (Time: {ucs_time:.6f} seconds)")
-
-        # Measure IDDFS time
-        start_time = time.time()
-        iddfs_result = uninformed_searches.iddfs(graph, start, goal, 10)
-        iddfs_time = time.time() - start_time
-        print(f"IDDFS {start} to {goal}: {iddfs_result} (Time: {iddfs_time:.6f} seconds)")
 
 if __name__ == "__main__":
     run_tests()
